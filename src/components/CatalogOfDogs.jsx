@@ -38,7 +38,7 @@ const dogs = [
 function CatalogOfDogs() {
   const [filteredDogs, setFilteredDogs] = useState(dogs);
 
-  // Hanterar sökningen och skickar sökresultaten till FilterBar via props
+  //Handle the search, and send the searchresult via props to FilterBar.
   const handleSearch = (searchTerm) => {
     const filtered = dogs.filter(dog => 
       dog.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -46,17 +46,17 @@ function CatalogOfDogs() {
     setFilteredDogs(filtered);
   };
 
-  // Hanterar sorteringen och skickar det via props till FilterBar
-  const handleFilter = (attribute, direction) => {
-    let sortedDogs = [...dogs]; // Kopierar hundlistan
+  //handle the sortorder and send it to filterbar using props
+  const handleFilter = (filterThis, direction) => {
+    let sortedDogs = [...dogs]; //copy and save list
     if (direction === 'asc') {
-      sortedDogs.sort((a, b) => (a[attribute] > b[attribute] ? 1 : -1)); // Sorterar stigande
+      sortedDogs.sort((a, b) => (a[filterThis] > b[filterThis] ? 1 : -1)); //asc
     } else if (direction === 'desc') {
-      sortedDogs.sort((a, b) => (a[attribute] < b[attribute] ? 1 : -1)); // Sorterar fallande
+      sortedDogs.sort((a, b) => (a[filterThis] < b[filterThis] ? 1 : -1)); //desc
     } else {
-      sortedDogs = dogs; // Återställer till originaldata om ingen sortering
+      sortedDogs = dogs; //set normal data
     }
-    setFilteredDogs(sortedDogs); // Uppdaterar listan med sorterad data
+    setFilteredDogs(sortedDogs); //update order
   };
 
   return (

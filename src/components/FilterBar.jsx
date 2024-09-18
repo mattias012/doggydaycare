@@ -2,36 +2,44 @@ import React, { useState } from 'react';
 import './../styles/FilterBar.css';
 
 function FilterBar(props) {
-    const [searchTerm, setSearchTerm] = useState('');  // Håller söktermen lokalt
-    const [sortBy, setSortBy] = useState({}); // Håller koll på sorteringsordning
+    const [searchTerm, setSearchTerm] = useState('');  //remember the searchTerm
+    const [sortBy, setSortBy] = useState({}); // remeber the sort order as an Object?
   
-    // Anropar props.onSearch när användaren söker
-    const handleSearch = (e) => {
+    //call this function when the user searches for anything, this is a function that sends the search term back to parent as a function, props.onSearch
+    //when the user searches
+    const handleSearch = (e) => { //e is for event, listen to the event object?
       setSearchTerm(e.target.value);
-      props.onSearch(e.target.value); // Skickar söktermen till props.onSearch
+      props.onSearch(e.target.value); //send it back up in the tree..
     };
+
+    //Function to clear search field, not working yet.
+    const clearSearch = () => {
+        setSearchTerm(''); //clear field
+        props.onSearch(''); //send empty string back up
+      };
   
-    // Hanterar sortering och anropar props.onFilter när användaren sorterar
-    const handleSort = (attribute) => {
-      const newSortBy = { ...sortBy }; // Kopierar den nuvarande sorteringsordningen
-      if (!newSortBy[attribute]) {
-        newSortBy[attribute] = 'asc'; // Första klick, sortera stigande
-      } else if (newSortBy[attribute] === 'asc') {
-        newSortBy[attribute] = 'desc'; // Om stigande, ändra till fallande
+    //first we have a local function that handles the search, by calling the filter function on level up, using the props.
+    const handleSort = (sortByThis) => {
+      const newSortBy = { ...sortBy }; //copy and save current sort order
+      if (!newSortBy[sortByThis]) {
+        newSortBy[sortByThis] = 'asc'; //on first click, sort by ascending
+      } else if (newSortBy[sortByThis] === 'asc') {
+        newSortBy[sortByThis] = 'desc'; //in case we have ascending already, we change to descending order
       } else {
-        newSortBy[attribute] = null; // Om fallande, ta bort sorteringen
+        newSortBy[sortByThis] = null; //in case we have descending showing, we toggle to normal (null) sorting.
       }
+      //set the sortOrder state, which is in this file.
       setSortBy(newSortBy);
-      props.onFilter(attribute, newSortBy[attribute]); // Skickar attribut och riktning till props.onFilter
+      props.onFilter(sortByThis, newSortBy[sortByThis]); //send it back up to catalogOfDogs by using the props function -> props.onFilter
     };
   
     return (
       <div className="filter-bar">
         <input
           type="text"
-          placeholder="Search by name"
+          placeholder="Search dog"
           value={searchTerm}
-          onChange={handleSearch} // Kallar på handleSearch
+          onChange={handleSearch}
           className="search-input"
         />
         <div className="filter-buttons">
