@@ -6,12 +6,13 @@
     background-color: #ffffffdd;
     border: 1px solid rgba(128, 128, 128, 0.356);
     border-radius: 5px;
-    height: 100%;
+    margin: 0px;
+    
     
   }
   .catalog-container {
-    margin-top: 190px; /* Lägger till tillräckligt med utrymme för Navbar och FilterBar */
-    overflow-y: auto; /* Gör katalogen scrollbar */
+    margin-top: 5px; /* Lägger till tillräckligt med utrymme för Navbar och FilterBar */
+    width: 100vw;
 
   }
   
