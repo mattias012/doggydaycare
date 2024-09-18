@@ -2,41 +2,33 @@ import React from 'react';
 import DogCard from '../components/DogCard';
 import './../styles/CatalogOfDogs.css';
 import FilterBar from '../components/FilterBar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const dogs = [
-  {
-    name: "Molly",
-    sex: "female",
-    breed: "briard",
-    img: "https://images.dog.ceo/breeds/briard/n02105251_6840.jpg",
-    present: false,
-    age: 4,
-    chipNumber: "IEH455006",
-    owner: {
-      name: "Wilmer",
-      lastName: "Svensson",
-      phoneNumber: "0769239356"
-    }
-  },
-  {
-    name: "Bella",
-    sex: "female",
-    breed: "labrador",
-    img: "https://images.dog.ceo/breeds/labrador/n02099712_3947.jpg",
-    present: false,
-    age: 1,
-    chipNumber: "HPF367168",
-    owner: {
-      name: "Tina",
-      lastName: "Ahlberg",
-      phoneNumber: "0732303484"
-    }
-  }
-];
 
 function CatalogOfDogs() {
-  const [filteredDogs, setFilteredDogs] = useState(dogs);
+
+  const [dogs, setDogs] = useState([]);  // Vi kommer att uppdatera denna med data från API:et
+  const [filteredDogs, setFilteredDogs] = useState([]);  // Filtrerade hundar baserat på sök och filter
+  const [loading, setLoading] = useState(true);  // För att visa en laddningsstatus
+
+  //lets use useEffect to fetch data from API:et when the component has loaded
+  useEffect(() => {
+    const fetchDogs = async () => {
+      try {
+        const response = await fetch('https://api.jsonbin.io/v3/b/66ea6857e41b4d34e4325758');
+        const data = await response.json(); //convert json object to javascript stuff
+        setDogs(data.record);  //set dogs data
+        setFilteredDogs(data.record);  //init the filteredList with our newly fetch data as well, initially the same as above.
+        setLoading(false);  //set loading to false when done.
+      } catch (error) { //catch any errors
+        console.error('Error fetching data:', error);
+        setLoading(false);  //close loading in case of failure.
+      }
+    };
+
+    fetchDogs();
+  }, []);  //empty array as dependecies, means that we only run in once on rendering
+
 
   //Handle the search, and send the searchresult via props to FilterBar.
   const handleSearch = (searchTerm) => {
@@ -58,6 +50,12 @@ function CatalogOfDogs() {
     }
     setFilteredDogs(sortedDogs); //update order
   };
+
+  if (loading) {
+    return (
+      <div className="spinner"></div>  // CSS-baserad spinner
+    );
+  }
 
   return (
     <div>
