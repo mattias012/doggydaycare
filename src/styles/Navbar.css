@@ -1,0 +1,66 @@
+/* general settings */
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #a8b0b9; /* our awesome background color */
+    padding: 10px 20px;
+    color: white;
+    margin: 0;
+    width: 100vw; 
+    height: 60px;
+  }
+  
+  /* */
+  .navbar-brand img {
+    height: 60px; /* setting size for desktop or larger screens */
+    width: auto;
+  }
+  
+  .navbar-brand h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #f39c12; /* Awesome colors */
+  }
+  
+  /* links in navbar */
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .navbar-links li a:hover {
+    color: #f39c12; /* on hover */
+  }
+  
+  /* Mobilanpassad navbar */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      height: auto; /* allow height adjustment in case of smaller screens */
+    }
+  
+    .navbar-brand img {
+      height: 40px; /* Less size on mobile device */
+    }
+  
+    .navbar-links {
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+  
+    .navbar-links li {
+      margin-bottom: 10px;
+    }
+  }
+  
