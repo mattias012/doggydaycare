@@ -7,7 +7,14 @@
     border: 1px solid rgba(128, 128, 128, 0.356);
     border-radius: 5px;
     height: 100%;
+    
   }
+  .catalog-container {
+    margin-top: 190px; /* Lägger till tillräckligt med utrymme för Navbar och FilterBar */
+    overflow-y: auto; /* Gör katalogen scrollbar */
+
+  }
+  
 /* Spinner för laddning */
 .spinner {
     border: 4px solid rgba(0, 0, 0, 0.1); /* Lätt genomskinlig yttre kant */

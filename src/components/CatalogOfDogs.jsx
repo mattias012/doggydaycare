@@ -61,11 +61,13 @@ function CatalogOfDogs() {
     <div>
       {/* Skickar props (onSearch och onFilter) till FilterBar */}
       <FilterBar onSearch={handleSearch} onFilter={handleFilter} />
+      <div className="catalog-container">
       <div className="catalog-of-dogs">
         {filteredDogs.map((dog) => (
           <DogCard key={dog.chipNumber} dog={dog} />
         ))}
       </div>
+    </div>
     </div>
   );
 }

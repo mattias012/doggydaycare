@@ -1,5 +1,11 @@
 /* general settings */
-.navbar {
+.navbar {  
+    position: fixed;
+    width: 100vw;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lätt skugga under navbaren */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Hög z-index så att navbaren ligger över annat innehåll */
     display: flex;
     align-items: center;
     background-color: #a8b0b9; /* our awesome background color */
