@@ -1,11 +1,8 @@
-/* Rutnätslayout för korten */
-
-  
   /* Each card */
   .dog-card {
     width: 100%; 
     max-width: 150px; 
-    background-color: #fff;
+    background-color: #a8b0b9;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -29,13 +26,17 @@
   .dog-info h3 {
     margin: 0;
     font-size: 16px; 
+   
+    font-weight: bold;
     color: #333;
   }
   
   .dog-info p {
     margin: 5px 0;
     font-size: 14px; 
-    color: #777;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    color: #FFFFFF;
   }
   
   .details-button {
@@ -44,7 +45,7 @@
     font-size: 14px;
     background-color: #f39c12;
     color: white;
-    border: none;
+    border: 1px solid rgba(116, 116, 116, 0.439);
     border-radius: 5px;
     cursor: pointer;
   }

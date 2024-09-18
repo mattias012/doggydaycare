@@ -1,12 +1,18 @@
 .catalog-of-dogs {
     display: grid;
-    grid-template-columns: 1fr; /* Default: 1 column */
-    gap: 20px; /* distance between cards */
-    padding: 20px;
+    gap: 20px; 
+    padding: 20px;  
+    justify-content: start;
+    width 100vw;
+    background-color: #ffffffdd;
+    border: 1px solid rgba(128, 128, 128, 0.356);
+    border-radius: 5px;
+    height: 100%;
   }
-    /* larger screens */
-    @media (min-width: 768px) {
-        .catalog-of-dogs {
-          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Rutnät med flera kolumner på större skärmar */
-        }
-      }
+
+  /* larger screens */
+@media (min-width: 768px) {
+    .catalog-of-dogs {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Rutnät med flera kolumner på större skärmar */
+    }
+ }
