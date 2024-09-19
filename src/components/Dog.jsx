@@ -3,10 +3,10 @@ import './../styles/Dog.css';
 
 function Dog() {
   const location = useLocation();
-  const dog = location.state?.dog; // Get the dog object from the state
+  const dog = location.state?.dog; //Get the dog object from the state
 
   if (!dog) {
-    return <p>Dog not found</p>; // If dog is not found in state
+    return <p>Dog not found</p>; //If dog is not found in state
   }
 
   return (

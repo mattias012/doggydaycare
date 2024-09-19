@@ -5,13 +5,13 @@ function DogCard({ dog, currentFilter }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    console.log("Navigating to dog detail with state: ", { dog, fromFilter: currentFilter });
+    //Navigate to dog detail page and set a state of dog object with filter to remember searchterm and filters
     navigate(`/dog/${dog.chipNumber}`, { state: { dog, fromFilter: currentFilter } });
   };
 
   return (
     <div 
-    className={`dog-card ${dog.present ? 'checked-in' : ''}`}  // Dynamically add 'checked-in' class if present is true
+    className={`dog-card ${dog.present ? 'checked-in' : ''}`}  //Dynamically add checkedIn if present is true, green border
     onClick={handleClick}
     >
       <img src={dog.img} alt={dog.name} className="dog-image" />
