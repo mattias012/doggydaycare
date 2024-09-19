@@ -1,4 +1,7 @@
 # Doggy Day Care - React examination
-# Link to github pages: x
+
+Examination project for React JS.
+
+# Link to github pages: [x](https://mattias012.github.io/doggydaycare/#/)
 
 
