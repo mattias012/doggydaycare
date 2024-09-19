@@ -1,32 +1,24 @@
-import React from 'react';
-import './../styles/DogCard.css'; // Vi skapar en separat CSS-fil för styling
+import { useNavigate } from 'react-router-dom';
+import './../styles/DogCard.css';
 
-function DogCard({ dog }) {
+function DogCard({ dog, currentFilter }) {
+  const navigate = useNavigate();
 
-    const dogExample = {
-        name: "Molly",
-        sex: "female",
-        breed: "briard",
-        img: "https://images.dog.ceo/breeds/briard/n02105251_6840.jpg",
-        present: false,
-        age: 4,
-        chipNumber: "IEH455006",
-        owner: {
-          name: "Wilmer",
-          lastName: "Svensson",
-          phoneNumber: "0769239356"
-        }
-      };
+  const handleClick = () => {
+    //Navigate to dog detail page and set a state of dog object with filter to remember searchterm and filters
+    navigate(`/dog/${dog.chipNumber}`, { state: { dog, fromFilter: currentFilter } });
+  };
 
-      
   return (
-    <div className="dog-card">
+    <div 
+    className={`dog-card ${dog.present ? 'checked-in' : ''}`}  //Dynamically add checkedIn if present is true, green border
+    onClick={handleClick}
+    >
       <img src={dog.img} alt={dog.name} className="dog-image" />
       <div className="dog-info">
-        <h3>{dog.name}</h3>
-        <p>Breed: {dog.breed}</p>
-        <p>Age: {dog.age} years</p>
-        <button className="details-button">View Details</button>
+        <h3>{dog.name} ({dog.age} yrs)</h3>
+        <p>{dog.breed}</p>
+        <button className="details-button" onClick={handleClick}>View Details</button>
       </div>
     </div>
   );

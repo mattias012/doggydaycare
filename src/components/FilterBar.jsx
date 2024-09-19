@@ -1,47 +1,57 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './../styles/FilterBar.css';
 
-function FilterBar(props) {
-    const [searchTerm, setSearchTerm] = useState('');  //remember the searchTerm
-    const [sortBy, setSortBy] = useState({}); // remeber the sort order as an Object?
-  
-    //call this function when the user searches for anything, this is a function that sends the search term back to parent as a function, props.onSearch
-    //when the user searches
-    const handleSearch = (e) => { //e is for event, listen to the event object?
-      setSearchTerm(e.target.value);
-      props.onSearch(e.target.value); //send it back up in the tree..
+function FilterBar({ onSearch, onFilter, currentSearch, showCheckedIn }) {
+    const [searchTerm, setSearchTerm] = useState(currentSearch || '');  // Remember the search term
+    const [sortBy, setSortBy] = useState({});  // Initialize the sortBy state to track sorting
+
+    // Update searchTerm whenever currentSearch from props changes
+    useEffect(() => {
+        setSearchTerm(currentSearch);  
+    }, [currentSearch]);
+
+    // Handle search input change
+    const handleSearchChange = (e) => {
+        const newSearchTerm = e.target.value;
+        setSearchTerm(newSearchTerm); 
+        onSearch(newSearchTerm); // Send the new search term back up to the parent (App.js)
     };
 
-    //Function to clear search field, not working yet.
-    const clearSearch = () => {
-        setSearchTerm(''); //clear field
-        props.onSearch(''); //send empty string back up
-      };
-  
-    //first we have a local function that handles the search, by calling the filter function on level up, using the props.
+    // Handle sorting and send it to the parent
     const handleSort = (sortByThis) => {
-      const newSortBy = { ...sortBy }; //copy and save current sort order
-      if (!newSortBy[sortByThis]) {
-        newSortBy[sortByThis] = 'asc'; //on first click, sort by ascending
-      } else if (newSortBy[sortByThis] === 'asc') {
-        newSortBy[sortByThis] = 'desc'; //in case we have ascending already, we change to descending order
-      } else {
-        newSortBy[sortByThis] = null; //in case we have descending showing, we toggle to normal (null) sorting.
-      }
-      //set the sortOrder state, which is in this file.
-      setSortBy(newSortBy);
-      props.onFilter(sortByThis, newSortBy[sortByThis]); //send it back up to catalogOfDogs by using the props function -> props.onFilter
+        const newSortBy = { ...sortBy }; // Make a copy of the current sortBy state
+        if (!newSortBy[sortByThis]) {
+            newSortBy[sortByThis] = 'asc'; // First click: sort ascending
+        } else if (newSortBy[sortByThis] === 'asc') {
+            newSortBy[sortByThis] = 'desc'; // Toggle to descending
+        } else {
+            newSortBy[sortByThis] = null; // Toggle off sorting
+        }
+        setSortBy(newSortBy);  // Update the sortBy state
+        onFilter(sortByThis, newSortBy[sortByThis]); // Send it back up to App
     };
-  
+
     return (
       <div className="filter-bar">
-        <input
-          type="text"
-          placeholder="Search dog"
-          value={searchTerm}
-          onChange={handleSearch}
-          className="search-input"
-        />
+        <div className="search-input-clear">
+          <span className="search-icon">&#128269;</span>
+          <input
+            type="text"
+            placeholder="Search dog"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className="search-input"
+          />
+          {/* Clear button */}
+          <button
+            type="button"
+            className="clear-button"
+            onClick={() => handleSearchChange({ target: { value: '' } })}
+            aria-label="Clear search"
+          >
+            &#10006; 
+          </button>
+        </div>
         <div className="filter-buttons">
           <button onClick={() => handleSort('breed')}>
             Breed {sortBy.breed === 'asc' ? '↑' : sortBy.breed === 'desc' ? '↓' : ''}
@@ -52,9 +62,12 @@ function FilterBar(props) {
           <button onClick={() => handleSort('size')}>
             Size {sortBy.size === 'asc' ? '↑' : sortBy.size === 'desc' ? '↓' : ''}
           </button>
+          <button onClick={() => handleSort('present')}>
+            {showCheckedIn ? 'Show All Dogs' : 'Show Checked-In Dogs'}
+          </button>
         </div>
       </div>
     );
-  }
-  
-  export default FilterBar;
+}
+
+export default FilterBar;

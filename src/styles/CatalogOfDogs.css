@@ -1,14 +1,41 @@
 .catalog-of-dogs {
     display: grid;
     gap: 20px; 
-    padding: 20px;  
-    justify-content: start;  
+    justify-content: flex-start;  
     background-color: #ffffffdd;
     border: 1px solid rgba(128, 128, 128, 0.356);
     border-radius: 5px;
-    height: 100%;
-  }
+    margin: 0px;
+    padding: 10px;
+ 
 
+    
+  }
+  .catalog-container {
+    margin-top: 5px; /* Lägger till tillräckligt med utrymme för Navbar och FilterBar */
+  
+  }
+  
+/* Spinner för laddning */
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1); /* Lätt genomskinlig yttre kant */
+    border-left-color: #09f; /* Färg på spinnern */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite; /* Snurrande animation */
+    margin: 20px auto; /* Centrerar spinnern */
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
   /* larger screens */
 @media (min-width: 568px) { /*don't really know what size we should have here*/
     .catalog-of-dogs {
