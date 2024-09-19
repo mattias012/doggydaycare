@@ -4,14 +4,21 @@
     gap: 10px; 
     padding: 20px;
     background-color: #f4f4f4; 
+    top: 105px;
+    left: 0px;
+    right: 0px;
+
     margin-top: 5px;
-    margin-bottom: 5px;
+    position: sticky;
+    width: 100%;
+    z-index: 999; /* Se till att den ligger under navbaren men över innehållet */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lätt skugga under filterbaren */
   }
   
   .search-input {
     padding: 10px;
     font-size: 16px;
-    width: 300px;
+    width: auto;
     border: 1px solid #ddd;
     border-radius: 5px;
   }
