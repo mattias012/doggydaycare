@@ -1,19 +1,13 @@
 /* Filter bar */
 .filter-bar {
     display: flex;
-    flex-wrap: wrap; /* Allows wrapping of items onto new lines */
-    align-items: left;
+    flex-wrap: wrap; /* Allow wrapping of elements */
+    align-items: center;
     justify-content: flex-start; 
     gap: 10px;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-bottom: 10px;
-    padding-right: 0px;
-    margin: 0px;
+    padding: 10px;
     background-color: #f4f4f4; 
-    top: 100px;
-    left: 0;
-    margin-top: 5px;
+    top: 105px;
     position: fixed;
     width: 100%; 
     z-index: 999; 
@@ -25,7 +19,7 @@
     position: relative;
     flex-grow: 1;  
     max-width: 300px;  
-    width: 80%;  
+    width: 100%;  /* Allow the input to take full width if needed */
 }
 
 /* Search input */
@@ -71,6 +65,7 @@
 .filter-buttons {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap; /* Allow buttons to wrap */
 }
 
 .filter-buttons button {
@@ -93,16 +88,29 @@
 /* Media query for smaller screens */
 @media (max-width: 768px) {
     .filter-bar {
-        top: 215px;
         flex-direction: column;  /* Stack elements vertically */
         align-items: stretch;  /* Ensure items take up full width */
     }
 
     .filter-buttons {
         justify-content: center;  /* Center the buttons horizontally */
-        flex-wrap: wrap;  /* Allow buttons to wrap */
+         /* Full width buttons on small screens */
+        flex-wrap: wrap;
     }
-
+    .filter-bar {
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping of elements */
+        align-items: center;
+        justify-content: flex-start; 
+        gap: 10px;
+        padding: 10px;
+        background-color: #f4f4f4; 
+        top: 105px;
+        position: fixed;
+        width: 100%; 
+        z-index: 999; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    }
     .search-input-clear {
         max-width: none;  /* Remove max-width on smaller screens */
         width: 100%;  /* Ensure it takes up the full width */
