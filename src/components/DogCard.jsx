@@ -1,16 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import './../styles/DogCard.css';
 
-function DogCard({ dog, currentFilter}) {
-     
-    const navigate = useNavigate();
+function DogCard({ dog, currentFilter }) {
+  const navigate = useNavigate();
 
-    const handleClick = () => {
-     
-      console.log("Navigating to dog detail with state: ", { dog, fromFilter: currentFilter });
-      navigate(`/dog/${dog.chipNumber}`, { state: { dog, fromFilter: currentFilter } });
-    };
-  
+  const handleClick = () => {
+    console.log("Navigating to dog detail with state: ", { dog, fromFilter: currentFilter });
+    navigate(`/dog/${dog.chipNumber}`, { state: { dog, fromFilter: currentFilter } });
+  };
 
   return (
     <div className="dog-card">
@@ -20,7 +17,6 @@ function DogCard({ dog, currentFilter}) {
         <p>Breed: {dog.breed}</p>
         <p>Age: {dog.age} years</p>
         <button className="details-button" onClick={handleClick}>View Details</button>
-
       </div>
     </div>
   );
