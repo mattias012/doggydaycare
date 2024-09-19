@@ -1,34 +1,79 @@
+/* Filter bar */
 .filter-bar {
     display: flex;
-    align-items: center; 
-    gap: 10px; 
-    padding: 20px;
-    background-color: #f4f4f4; 
+    flex-wrap: wrap; /* Allows wrapping of items onto new lines */
+    align-items: left;
+    justify-content: flex-start; /* Center the content horizontally */
+    gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin: 0px;
+    background-color: #f4f4f4;  /* Set background to white (light gray here) */
     top: 105px;
-    left: 0px;
-    right: 0px;
-
+    left: 0;
+    right: 0;
     margin-top: 5px;
     position: sticky;
-    width: 100%;
-    z-index: 999; /* Se till att den ligger under navbaren men över innehållet */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lätt skugga under filterbaren */
-  }
-  
-  .search-input {
-    padding: 10px;
+    width: 100%; /* Take up the full container width */
+    z-index: 999; /* Ensure it stays below navbar but above content */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow under the filter bar */
+}
+
+/* Search input container with icons */
+.search-input-clear {
+    position: relative;
+    flex-grow: 1;  /* Allow the search input to grow */
+    max-width: 300px;  /* Constrain the width of the search input */
+    width: 80%;  /* Make sure it adjusts to the space */
+}
+
+/* Search input */
+.search-input {
+    width: 100%;  /* Fill the search input container */
+    padding: 10px 40px;  /* Add padding for icons on both sides */
     font-size: 16px;
-    width: auto;
     border: 1px solid #ddd;
     border-radius: 5px;
-  }
-  
-  .filter-buttons {
+    box-sizing: border-box;
+}
+
+/* Magnifying glass icon */
+.search-icon {
+    position: absolute;
+    left: 10px;  /* Position the icon inside the input */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #888;  /* Color of the magnifying glass */
+}
+
+/* Clear (X) button */
+.clear-button {
+    position: absolute;
+    right: 10px;  /* Position the clear button inside the input */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 16px;
+    visibility: hidden;  /* Hidden by default */
+}
+
+/* Show clear button only when there is text */
+.search-input:not(:placeholder-shown) + .clear-button {
+    visibility: visible;
+}
+
+/* Filter buttons */
+.filter-buttons {
     display: flex;
-    gap: 10px; 
-  }
-  
-  .filter-buttons button {
+    gap: 10px;
+}
+
+.filter-buttons button {
     padding: 10px;
     font-size: 14px;
     background-color: #f39c12;
@@ -38,8 +83,27 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-  }
-  
-  .filter-buttons button:hover {
+    justify-content: center;  /* Ensure text and arrows are centered */
+}
+
+.filter-buttons button:hover {
     background-color: #e67e22;
-  }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .filter-bar {
+        flex-direction: column;  /* Stack elements vertically */
+        align-items: stretch;  /* Ensure items take up full width */
+    }
+
+    .filter-buttons {
+        justify-content: center;  /* Center the buttons horizontally */
+        flex-wrap: wrap;  /* Allow buttons to wrap */
+    }
+
+    .search-input-clear {
+        max-width: none;  /* Remove max-width on smaller screens */
+        width: 100%;  /* Ensure it takes up the full width */
+    }
+}

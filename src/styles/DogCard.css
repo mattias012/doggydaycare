@@ -52,6 +52,7 @@
     border: 1px solid rgba(116, 116, 116, 0.439);
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 10px;
   }
   
   .details-button:hover {
