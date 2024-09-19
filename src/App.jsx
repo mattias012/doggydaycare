@@ -6,10 +6,10 @@ import Dog from './components/Dog.jsx';
 import Navbar from './components/Navbar.jsx';
 
 function App() {
-  // State for dogs, filtered dogs, and search term
   const [dogs, setDogs] = useState([]); 
   const [filteredDogs, setFilteredDogs] = useState([]);  
   const [currentFilter, setCurrentFilter] = useState(''); // Current search term
+  const [showCheckedIn, setShowCheckedIn] = useState(false); // Track if only checked-in dogs are shown
 
   // Fetch data from the API when the app first loads
   useEffect(() => {
@@ -36,17 +36,28 @@ function App() {
     setCurrentFilter(searchTerm); // Save the current search term
   };
 
-  // Handle sorting and update filteredDogs
+  // Handle filter based on check-in status (present) and show only checked-in dogs
   const handleFilter = (filterThis, direction) => {
-    let sortedDogs = [...dogs];
-    if (direction === 'asc') {
-      sortedDogs.sort((a, b) => (a[filterThis] > b[filterThis] ? 1 : -1)); // Ascending sort
-    } else if (direction === 'desc') {
-      sortedDogs.sort((a, b) => (a[filterThis] < b[filterThis] ? 1 : -1)); // Descending sort
+    if (filterThis === 'present') {
+      console.log("Toggling showCheckedIn:", !showCheckedIn);  // Log the change in state
+      setShowCheckedIn(!showCheckedIn); // Toggle between showing all dogs and showing only checked-in dogs
+      if (!showCheckedIn) {
+        const checkedInDogs = dogs.filter(dog => dog.present === true); // Show only checked-in dogs
+        setFilteredDogs(checkedInDogs);
+      } else {
+        setFilteredDogs(dogs); // Reset to show all dogs
+      }
     } else {
-      sortedDogs = dogs; // Reset to original order
+      let sortedDogs = [...dogs];
+      if (direction === 'asc') {
+        sortedDogs.sort((a, b) => (a[filterThis] > b[filterThis] ? 1 : -1)); // Ascending sort
+      } else if (direction === 'desc') {
+        sortedDogs.sort((a, b) => (a[filterThis] < b[filterThis] ? 1 : -1)); // Descending sort
+      } else {
+        sortedDogs = dogs; // Reset to original order
+      }
+      setFilteredDogs(sortedDogs); // Update the sorted list
     }
-    setFilteredDogs(sortedDogs); // Update the sorted list
   };
 
   return (
@@ -62,6 +73,7 @@ function App() {
               onSearch={handleSearch} 
               onFilter={handleFilter}
               currentSearch={currentFilter}
+              showCheckedIn={showCheckedIn} // Pass showCheckedIn to FilterBar
             />
           } 
         />

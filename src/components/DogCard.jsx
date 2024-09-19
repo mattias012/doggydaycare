@@ -10,7 +10,10 @@ function DogCard({ dog, currentFilter }) {
   };
 
   return (
-    <div className="dog-card">
+    <div 
+    className={`dog-card ${dog.present ? 'checked-in' : ''}`}  // Dynamically add 'checked-in' class if present is true
+    onClick={handleClick}
+    >
       <img src={dog.img} alt={dog.name} className="dog-image" />
       <div className="dog-info">
         <h3>{dog.name}</h3>

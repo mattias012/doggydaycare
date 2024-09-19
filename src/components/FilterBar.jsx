@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './../styles/FilterBar.css';
 
-function FilterBar(props) {
-    const [searchTerm, setSearchTerm] = useState(props.currentSearch || '');  // Remember the search term
+function FilterBar({ onSearch, onFilter, currentSearch, showCheckedIn }) {
+    const [searchTerm, setSearchTerm] = useState(currentSearch || '');  // Remember the search term
     const [sortBy, setSortBy] = useState({});  // Initialize the sortBy state to track sorting
+
+    // Log to check if FilterBar is rendering
+    console.log("FilterBar rendered with showCheckedIn:", showCheckedIn);
 
     // Update searchTerm whenever currentSearch from props changes
     useEffect(() => {
-        setSearchTerm(props.currentSearch);  
-    }, [props.currentSearch]);
+        setSearchTerm(currentSearch);  
+    }, [currentSearch]);
 
     // Handle search input change
     const handleSearchChange = (e) => {
         const newSearchTerm = e.target.value;
         setSearchTerm(newSearchTerm); 
-        props.onSearch(newSearchTerm);  // Send the new search term back up to the parent (App.js)
+        onSearch(newSearchTerm); // Send the new search term back up to the parent (App.js)
     };
 
     // Handle sorting and send it to the parent
@@ -28,7 +31,7 @@ function FilterBar(props) {
             newSortBy[sortByThis] = null; // Toggle off sorting
         }
         setSortBy(newSortBy);  // Update the sortBy state
-        props.onFilter(sortByThis, newSortBy[sortByThis]); // Send it back up to App.js
+        onFilter(sortByThis, newSortBy[sortByThis]); // Send it back up to App.js
     };
 
     return (
@@ -49,6 +52,10 @@ function FilterBar(props) {
           </button>
           <button onClick={() => handleSort('size')}>
             Size {sortBy.size === 'asc' ? '↑' : sortBy.size === 'desc' ? '↓' : ''}
+          </button>
+          {/* New button for filtering check-in dogs */}
+          <button onClick={() => handleSort('present')}>
+            {showCheckedIn ? 'Show All Dogs' : 'Show Checked-In Dogs'} {/* Dynamically change button text */}
           </button>
         </div>
       </div>
