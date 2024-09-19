@@ -1,8 +1,17 @@
-import React from 'react';
-import './../styles/DogCard.css'; // Vi skapar en separat CSS-fil för styling
+import { useNavigate } from 'react-router-dom';
+import './../styles/DogCard.css';
 
-function DogCard({ dog }) {
+function DogCard({ dog, currentFilter}) {
      
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+     
+      console.log("Navigating to dog detail with state: ", { dog, fromFilter: currentFilter });
+      navigate(`/dog/${dog.chipNumber}`, { state: { dog, fromFilter: currentFilter } });
+    };
+  
+
   return (
     <div className="dog-card">
       <img src={dog.img} alt={dog.name} className="dog-image" />
@@ -10,7 +19,8 @@ function DogCard({ dog }) {
         <h3>{dog.name}</h3>
         <p>Breed: {dog.breed}</p>
         <p>Age: {dog.age} years</p>
-        <button className="details-button">View Details</button>
+        <button className="details-button" onClick={handleClick}>View Details</button>
+
       </div>
     </div>
   );

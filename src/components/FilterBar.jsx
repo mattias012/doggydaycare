@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './../styles/FilterBar.css';
 
 function FilterBar(props) {
-    const [searchTerm, setSearchTerm] = useState('');  //remember the searchTerm
-    const [sortBy, setSortBy] = useState({}); // remeber the sort order as an Object?
-  
-    //call this function when the user searches for anything, this is a function that sends the search term back to parent as a function, props.onSearch
-    //when the user searches
-    const handleSearch = (e) => { //e is for event, listen to the event object?
-      setSearchTerm(e.target.value);
-      props.onSearch(e.target.value); //send it back up in the tree..
-    };
+    const [searchTerm, setSearchTerm] = useState(props.searchTerm || '');  //remember the searchTerm
+    const [sortBy, setSortBy] = useState({}); // remember the sort order as an Object?
 
-    //Function to clear search field, not working yet.
-    const clearSearch = () => {
-        setSearchTerm(''); //clear field
-        props.onSearch(''); //send empty string back up
+
+     //call this function when the user searches for anything, this is a function that sends the search term back to parent as a function, props.onSearch
+    //when the user searches
+      const handleSearchChange = (e) => {
+        const newSearchTerm = e.target.value;
+            setSearchTerm(newSearchTerm); 
+            props.onSearch(newSearchTerm); 
       };
+    
+      useEffect(() => {
+        setSearchTerm(props.searchTerm);  // Uppdatera searchTerm när currentSearch ändras
+    }, [searchTerm]);
   
     //first we have a local function that handles the search, by calling the filter function on level up, using the props.
     const handleSort = (sortByThis) => {
@@ -39,7 +39,7 @@ function FilterBar(props) {
           type="text"
           placeholder="Search dog"
           value={searchTerm}
-          onChange={handleSearch}
+          onChange={handleSearchChange}
           className="search-input"
         />
         <div className="filter-buttons">
