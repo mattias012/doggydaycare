@@ -16,9 +16,8 @@ function DogCard({ dog, currentFilter }) {
     >
       <img src={dog.img} alt={dog.name} className="dog-image" />
       <div className="dog-info">
-        <h3>{dog.name}</h3>
-        <p>Breed: {dog.breed}</p>
-        <p>Age: {dog.age} years</p>
+        <h3>{dog.name} ({dog.age} yrs)</h3>
+        <p>{dog.breed}</p>
         <button className="details-button" onClick={handleClick}>View Details</button>
       </div>
     </div>

@@ -1,19 +1,19 @@
 .catalog-of-dogs {
     display: grid;
     gap: 20px; 
-    padding: 20px;  
-    justify-content: start;  
+    justify-content: flex-start;  
     background-color: #ffffffdd;
     border: 1px solid rgba(128, 128, 128, 0.356);
     border-radius: 5px;
     margin: 0px;
-    
+    padding: 10px;
+ 
+
     
   }
   .catalog-container {
     margin-top: 5px; /* Lägger till tillräckligt med utrymme för Navbar och FilterBar */
-    width: 100vw;
-
+  
   }
   
 /* Spinner för laddning */

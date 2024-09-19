@@ -1,9 +1,76 @@
-.dog {
+/* Dog detail page */
+.dog-container {
+    display: flex;
+    justify-content: flex-start; /* Flyttar innehållet till vänster */
     padding: 20px;
+    max-width: 100%; /* Full bredd */
   }
-    
+  
+  .dog {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%; /* Anpassa till 50% av bredden för att det inte ska bli för brett */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dog h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #333;
+    display: flex;
+    align-items: center; /* Align name and dot */
+  }
+  
+  .dog-detail-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
   .dog p {
     font-size: 18px;
+    color: #444;
+    margin-bottom: 8px;
+  }
+  
+  .dog p span {
+    font-weight: bold;
     color: #333;
+  }
+  
+  /* Status dot (green for checked-in, red for not checked-in) */
+  .status-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 10px;
+  }
+  
+  .status-dot.green {
+    background-color: #28a745; /* Green for checked-in */
+  }
+  
+  .status-dot.red {
+    background-color: #dc3545; /* Red for not checked-in */
+  }
+  
+  /* Back button */
+  .back-button {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .back-button:hover {
+    background-color: #e67e22;
   }
   
