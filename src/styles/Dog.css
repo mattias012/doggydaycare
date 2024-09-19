@@ -4,6 +4,7 @@
     justify-content: flex-start; 
     padding: 20px;
     max-width: 100%; 
+    margin-top: 105px;
   }
   
   .dog {
@@ -73,4 +74,13 @@
   .back-button:hover {
     background-color: #e67e22;
   }
-  
+    /* larger screens */
+@media (min-width: 768px) { /*don't really know what size we should have here*/
+    .catalog-of-dogs {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    }
+    .dog-container {
+        margin-top: 100px;
+      
+      }
+}
