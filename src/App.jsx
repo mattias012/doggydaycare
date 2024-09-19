@@ -4,6 +4,7 @@ import Home from './components/Home.jsx';
 import CatalogOfDogs from './components/CatalogOfDogs.jsx';
 import Dog from './components/Dog.jsx';
 import Navbar from './components/Navbar.jsx';
+import './styles/App.css';
 
 function App() {
   const [dogs, setDogs] = useState([]); 
@@ -63,6 +64,7 @@ function App() {
   };
 
   return (
+    <div className='big-container'>
     <Router>
       <Navbar />
       <Routes>
@@ -82,6 +84,7 @@ function App() {
         <Route path="/dog/:chipNumber" element={<Dog />} />
       </Routes>
     </Router>
+    </div>
   );
 }
 

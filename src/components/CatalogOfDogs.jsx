@@ -5,8 +5,7 @@ import FilterBar from './FilterBar';
 function CatalogOfDogs({ dogs, onSearch, onFilter, currentSearch, showCheckedIn }) {
   
   return (
-    <div>
-      {/* Skickar props till FilterBar */}
+    <div className="container-dogs"> 
       <FilterBar 
         onSearch={onSearch} 
         onFilter={onFilter} 
