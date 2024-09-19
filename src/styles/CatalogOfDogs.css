@@ -1,20 +1,21 @@
 .catalog-of-dogs {
     display: grid;
-    gap: 20px; 
+    gap: 40px; 
     justify-content: flex-start;  
     background-color: #ffffffdd;
     border: 1px solid rgba(128, 128, 128, 0.356);
     border-radius: 5px;
     margin: 0px;
-    padding: 10px;
- 
-
+    padding: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 2fr)); 
+    
     
   }
   .catalog-container {
-    margin-top: 5px; /* Lägger till tillräckligt med utrymme för Navbar och FilterBar */
+    margin-top: 350px; 
   
   }
+
   
 /* Spinner för laddning */
 .spinner {
@@ -37,8 +38,12 @@
   }
   
   /* larger screens */
-@media (min-width: 568px) { /*don't really know what size we should have here*/
+@media (min-width: 768px) { /*don't really know what size we should have here*/
     .catalog-of-dogs {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Rutnät med flera kolumner på större skärmar */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
     }
+    .catalog-container {
+        margin-top: 180px;
+      
+      }
  }

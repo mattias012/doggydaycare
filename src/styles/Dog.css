@@ -1,16 +1,16 @@
 /* Dog detail page */
 .dog-container {
     display: flex;
-    justify-content: flex-start; /* Flyttar innehållet till vänster */
+    justify-content: flex-start; 
     padding: 20px;
-    max-width: 100%; /* Full bredd */
+    max-width: 100%; 
   }
   
   .dog {
     background-color: #f0f0f0;
     padding: 20px;
     border-radius: 10px;
-    width: 50%; /* Anpassa till 50% av bredden för att det inte ska bli för brett */
+    width: 50%; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
@@ -19,7 +19,7 @@
     margin-bottom: 15px;
     color: #333;
     display: flex;
-    align-items: center; /* Align name and dot */
+    align-items: center; 
   }
   
   .dog-detail-image {

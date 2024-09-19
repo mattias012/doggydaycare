@@ -3,35 +3,35 @@
     display: flex;
     flex-wrap: wrap; /* Allows wrapping of items onto new lines */
     align-items: left;
-    justify-content: flex-start; /* Center the content horizontally */
+    justify-content: flex-start; 
     gap: 10px;
     padding-top: 10px;
-    padding-bottom: 10px;
     padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 0px;
     margin: 0px;
-    background-color: #f4f4f4;  /* Set background to white (light gray here) */
-    top: 105px;
+    background-color: #f4f4f4; 
+    top: 100px;
     left: 0;
-    right: 0;
     margin-top: 5px;
-    position: sticky;
-    width: 100%; /* Take up the full container width */
-    z-index: 999; /* Ensure it stays below navbar but above content */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow under the filter bar */
+    position: fixed;
+    width: 100%; 
+    z-index: 999; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 /* Search input container with icons */
 .search-input-clear {
     position: relative;
-    flex-grow: 1;  /* Allow the search input to grow */
-    max-width: 300px;  /* Constrain the width of the search input */
-    width: 80%;  /* Make sure it adjusts to the space */
+    flex-grow: 1;  
+    max-width: 300px;  
+    width: 80%;  
 }
 
 /* Search input */
 .search-input {
-    width: 100%;  /* Fill the search input container */
-    padding: 10px 40px;  /* Add padding for icons on both sides */
+    width: 95%;  
+    padding: 10px 40px;  
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -41,17 +41,17 @@
 /* Magnifying glass icon */
 .search-icon {
     position: absolute;
-    left: 10px;  /* Position the icon inside the input */
+    left: 10px; 
     top: 50%;
     transform: translateY(-50%);
     font-size: 16px;
-    color: #888;  /* Color of the magnifying glass */
+    color: #888;  
 }
 
 /* Clear (X) button */
 .clear-button {
     position: absolute;
-    right: 10px;  /* Position the clear button inside the input */
+    right: 10px;  
     top: 50%;
     transform: translateY(-50%);
     background-color: transparent;
@@ -59,7 +59,7 @@
     color: #007bff;
     cursor: pointer;
     font-size: 16px;
-    visibility: hidden;  /* Hidden by default */
+    visibility: hidden; 
 }
 
 /* Show clear button only when there is text */
@@ -83,7 +83,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;  /* Ensure text and arrows are centered */
+    justify-content: center; 
 }
 
 .filter-buttons button:hover {
@@ -93,6 +93,7 @@
 /* Media query for smaller screens */
 @media (max-width: 768px) {
     .filter-bar {
+        top: 215px;
         flex-direction: column;  /* Stack elements vertically */
         align-items: stretch;  /* Ensure items take up full width */
     }
