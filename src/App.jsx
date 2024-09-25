@@ -1,6 +1,7 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Home from './components/Home.jsx';
+import About from './components/About.jsx';
 import CatalogOfDogs from './components/CatalogOfDogs.jsx';
 import Dog from './components/Dog.jsx';
 import Navbar from './components/Navbar.jsx';
@@ -82,6 +83,7 @@ function App() {
           } 
         />
         <Route path="/dog/:chipNumber" element={<Dog />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </Router>
     </div>

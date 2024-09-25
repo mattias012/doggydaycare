@@ -1,5 +1,6 @@
 import { useLocation, Link } from 'react-router-dom';
 import './../styles/Dog.css';
+import placeholderImage from './../assets/logo.png';
 
 function Dog() {
   const location = useLocation();
@@ -22,7 +23,10 @@ function Dog() {
           {dog.name}
           <span className={`status-dot ${dog.present ? 'green' : 'red'}`}></span>
         </h2>
-        <img src={dog.img} alt={dog.name} className="dog-detail-image" />
+        <img src={dog.img} 
+             alt={dog.name} 
+             className="dog-detail-image"  
+             onError={(e) => e.target.src = placeholderImage} />
         <p><span>Breed:</span> {dog.breed}</p>
         <p><span>Age:</span> {dog.age}</p>
         <p><span>Sex:</span> {dog.sex}</p>
