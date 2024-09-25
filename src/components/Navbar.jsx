@@ -33,6 +33,9 @@ function Navbar() {
         <li>
           <Link to="/catalogOfDogs" onClick={closeMenu}>Dog Catalog</Link>
         </li>
+        <li>
+          <Link to="/about" onClick={closeMenu}>About Us</Link>
+        </li>
       </ul>
     </nav>
   );
