@@ -33,7 +33,10 @@ function App() {
   const handleSearch = (searchTerm) => {
     let baseDogs = showCheckedIn ? dogs.filter(dog => dog.present === true) : dogs; // Filter by checked-in status if necessary
     const filtered = baseDogs.filter(dog => 
-      dog.name.toLowerCase().includes(searchTerm.toLowerCase())
+
+      dog.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      dog.breed.toLowerCase().includes(searchTerm.toLowerCase())
+
     );
     setFilteredDogs(filtered); //Update the filtered dogs
     setCurrentFilter(searchTerm); //Save the current search term
