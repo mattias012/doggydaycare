@@ -1,16 +1,21 @@
-import DogCard from './DogCard';
-import './../styles/CatalogOfDogs.css';
-import FilterBar from './FilterBar';
+import DogCard from "./DogCard";
+import "./../styles/CatalogOfDogs.css";
+import FilterBar from "./FilterBar";
 
-function CatalogOfDogs({ dogs, onSearch, onFilter, currentSearch, showCheckedIn }) {
-  
+function CatalogOfDogs({
+  dogs,
+  onSearch,
+  onFilter,
+  currentSearch,
+  showCheckedIn,
+}) {
   return (
-    <div className="container-dogs"> 
-      <FilterBar 
-        onSearch={onSearch} 
-        onFilter={onFilter} 
-        currentSearch={currentSearch} 
-        showCheckedIn={showCheckedIn} 
+    <div className="container-dogs">
+      <FilterBar
+        onSearch={onSearch}
+        onFilter={onFilter}
+        currentSearch={currentSearch}
+        showCheckedIn={showCheckedIn}
       />
 
       <div className="catalog-container">

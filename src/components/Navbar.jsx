@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './../styles/Navbar.css';
-import doglogo from './../assets/logo.png';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./../styles/Navbar.css";
+import doglogo from "./../assets/logo.png";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false); // State for controlling the collapsible menu
@@ -26,15 +26,21 @@ function Navbar() {
       </div>
 
       {/* Links in navbar */}
-      <ul className={`navbar-links ${isOpen ? '' : 'collapsed'}`}>
+      <ul className={`navbar-links ${isOpen ? "" : "collapsed"}`}>
         <li>
-          <Link to="/" onClick={closeMenu}>Home</Link>
+          <Link to="/" onClick={closeMenu}>
+            Home
+          </Link>
         </li>
         <li>
-          <Link to="/catalogOfDogs" onClick={closeMenu}>Dog Catalog</Link>
+          <Link to="/catalogOfDogs" onClick={closeMenu}>
+            Dog Catalog
+          </Link>
         </li>
         <li>
-          <Link to="/about" onClick={closeMenu}>About Us</Link>
+          <Link to="/about" onClick={closeMenu}>
+            About Us
+          </Link>
         </li>
       </ul>
     </nav>

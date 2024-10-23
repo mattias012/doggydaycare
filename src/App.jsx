@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const fetchDogs = async () => {
       try {
-        const response = await fetch('https://api.jsonbin.io/v3/b/66ea6857e41b4d34e4325758');
+        const response = await fetch('https://api.jsonbin.io/v3/b/6718eb66acd3cb34a89bbcc6');
         const data = await response.json();
         setDogs(data.record); //Set dogs data
         setFilteredDogs(data.record); //Initialize filteredDogs with all dogs initially
